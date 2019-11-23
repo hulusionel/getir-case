@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const dataSchema = mongoose.Schema({
+const recordSchema = mongoose.Schema({
     managerName: {
         key: String
     },
@@ -13,4 +13,4 @@ const dataSchema = mongoose.Schema({
     counts: [{ type: Number }]
 });
 
-module.exports = mongoose.model('data', dataSchema);
+module.exports = mongoose.model('record', recordSchema);
