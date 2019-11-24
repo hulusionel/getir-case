@@ -2,23 +2,24 @@
 
 This app provides RESTful API with single endpoint for "getir case study" app.
 
-# How to install
-## Clone repo and install dependencies
-`https://github.com/hulusionel/getir-case.git`
+## How to install
+### Clone repo and install dependencies
+* $ git clone https://github.com/hulusionel/getir-case.git
+
 `cd getir-case`
+
 `npm install`
 
-## Enviroment variables
+### Enviroment variables
 Create a file named ".env" in the root directory and fill its contents as follows.
 ```ruby
 db_connection = XXX
 ```
 
-## Run the app
-`npm start` // for locally
+### Run the app
+`npm start` 
 
-## Test
-`npm test`
+`npm test` 
 
 ## Heroku -  post
 https://getircase.herokuapp.com/find
