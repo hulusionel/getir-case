@@ -7,14 +7,16 @@ const port = process.env.PORT || 3000
 
 const mainController = require('./controllers/mainController');
 const errorHandler = require('./helpers/errorHandler');
+const requestChecker = require('./middleware/requestChecker');
 
 require('dotenv').config();
+
 app.use(cors());
 app.use(bodyparser.json())
 app.use(express.urlencoded({ extended: false }));
 
-
-app.use('/', mainController);
+// Main controller for endpoint
+app.use('/', requestChecker.verifyParams, requestChecker.verifyTypes, mainController);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -22,11 +24,11 @@ app.use((req, res, next) => {
 });
 
 // production error handler
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
     errorHandler.badRequest(res, err);
 });
 
-
+// Starts app to listen to the selected port
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`)
 });

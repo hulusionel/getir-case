@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const DataSchema = require('../model/Data');
-const requestChecker = require('../middleware/requestChecker');
+const errorHandler = require('../helpers/errorHandler');
 
-router.post('/find', requestChecker.verifyParams, requestChecker.verifyTypes, (req, res) => {
+router.post('/find', (req, res) => {
   let { startDate, endDate, minCount, maxCount } = req.body;
-  // Aggregating query with params
   DataSchema.aggregate([
     // This query for calculating sum of counts
     {
@@ -41,7 +40,7 @@ router.post('/find', requestChecker.verifyParams, requestChecker.verifyTypes, (r
       });
     })
     .catch(err => {
-      Error.systemError(res, err);
+      errorHandler.systemError(res, err);
     });
 });
 

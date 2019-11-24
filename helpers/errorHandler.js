@@ -1,8 +1,8 @@
 // Error list
-const Error = {};
+const Errors = {};
 
 // Error function for system errors
-Error.systemError = (res, err) => {
+Errors.systemError = (res, err) => {
   res.status(500).json({
     code: 1,
     msg: 'The system has encountered an error.'
@@ -10,7 +10,7 @@ Error.systemError = (res, err) => {
 };
 
 // Error function for invalid syntax of request body
-Error.badRequest = (res, err) => {
+Errors.badRequest = (res, err) => {
   res.status(400).json({
     code: 2,
     msg: 'Request body syntax is wrong.'
@@ -18,7 +18,7 @@ Error.badRequest = (res, err) => {
 };
 
 // Error function for invalid endpoint requests
-Error.notFound = res => {
+Errors.notFound = res => {
   res.status(404).json({
     code: 3,
     msg: 'Endpoint is wrong.'
@@ -26,7 +26,7 @@ Error.notFound = res => {
 };
 
 // Error function for missing request parameters
-Error.parametersMissing = res => {
+Errors.parametersMissing = res => {
   res.status(400).json({
     code: 4,
     msg: 'One or more parameters are missing. Please provide "startDate", "endDate", "minCount", "maxCount" parameters.'
@@ -34,7 +34,7 @@ Error.parametersMissing = res => {
 };
 
 // Error function for invalid request parameters
-Error.parametersWrong = res => {
+Errors.parametersWrong = res => {
   res.status(400).json({
     code: 5,
     msg:
@@ -42,4 +42,4 @@ Error.parametersWrong = res => {
   });
 };
 
-module.exports = Error;
+module.exports = Errors;
